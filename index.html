@@ -7,6 +7,29 @@
         <title>Bundle JSON Generator</title>
         <!-- CSS only -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <style>
+            .icon {
+                text-align: center;
+                max-width: 65px;
+                font-size: 12px;
+            }
+            .icon input {
+                display: none;
+            }
+            .icon img {
+                height: 55px;
+                width: 55px;
+                border: 1px solid transparent;
+                padding: 10px;
+                display: block;
+            }
+            .icon img:hover {
+                border-color: grey;
+            }
+            .icon input:checked + img {
+                border-color: black; 
+            }
+        </style>
     </head>
     <body>
         <div style="max-width: 1000px;margin: auto;padding-top:100px;">
@@ -40,6 +63,91 @@
                                 <option value="4">4</option>
                             </select> 
                             <span id="limitHelpBlock" class="form-text text-muted">Number of slots for this one category</span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="limit" class="col-4 col-form-label">Icon</label> 
+                            <div class="col-8">
+                                <label class="icon">
+                                    <input type="radio" name="icon-0" value="bag">
+                                    <img src="icons/icon-bag.svg">
+                                    Bag
+                                </label>
+                                <label class="icon">
+                                    <input type="radio" name="icon-0" value="belt">
+                                    <img src="icons/icon-belt.svg">
+                                    Belt
+                                </label>
+                                <label class="icon">
+                                    <input type="radio" name="icon-0" value="boots">
+                                    <img src="icons/icon-boots.svg">
+                                    Boots
+                                </label>
+                                <label class="icon">
+                                    <input type="radio" name="icon" value="cap">
+                                    <img src="icons/icon-cap.svg">
+                                    Cap
+                                </label>
+                                <label class="icon">
+                                    <input type="radio" name="icon-0" value="crop">
+                                    <img src="icons/icon-crop.svg">
+                                    Crop
+                                </label>
+                                <label class="icon">
+                                    <input type="radio" name="icon-0" value="dress-shirt">
+                                    <img src="icons/icon-dress-shirt.svg">
+                                    Dress Shirt
+                                </label>
+                                <label class="icon">
+                                    <input type="radio" name="icon-0" value="hoodie">
+                                    <img src="icons/icon-hoodie.svg">
+                                    Hoodie
+                                </label>
+                                <label class="icon">
+                                    <input type="radio" name="icon" value="jeans">
+                                    <img src="icons/icon-jeans.svg">
+                                    Jeans
+                                </label>
+                                <label class="icon">
+                                    <input type="radio" name="icon-0" value="polo">
+                                    <img src="icons/icon-polo.svg">
+                                    Polo
+                                </label>
+                                <label class="icon">
+                                    <input type="radio" name="icon-0" value="shirt">
+                                    <img src="icons/icon-shirt.svg">
+                                    Shirt
+                                </label>
+                                <label class="icon">
+                                    <input type="radio" name="icon-0" value="shorts">
+                                    <img src="icons/icon-shorts.svg">
+                                    Shorts
+                                </label>
+                                <label class="icon">
+                                    <input type="radio" name="icon-0" value="tank">
+                                    <img src="icons/icon-tank.svg">
+                                    Tank
+                                </label>
+                                <label class="icon">
+                                    <input type="radio" name="icon-0" value="tee">
+                                    <img src="icons/icon-tee.svg">
+                                    T-Shirt
+                                </label>
+                                <label class="icon">
+                                    <input type="radio" name="icon-0" value="tights">
+                                    <img src="icons/icon-tights.svg">
+                                    Tights
+                                </label>
+                                <label class="icon">
+                                    <input type="radio" name="icon-0" value="track-pants">
+                                    <img src="icons/icon-track-pants.svg">
+                                    Pants
+                                </label>
+                                <label class="icon">
+                                    <input type="radio" name="icon-0" value="work-shirt">
+                                    <img src="icons/icon-work-shirt.svg">
+                                    Work Shirt
+                                </label>
                             </div>
                         </div>
                     </div>
@@ -77,6 +185,91 @@
                             <span id="limitHelpBlock" class="form-text text-muted">Number of slots for this one category</span>
                             </div>
                         </div>
+                        <div class="form-group row">
+                            <label for="limit" class="col-4 col-form-label">Icon</label> 
+                            <div class="col-8">
+                                <label class="icon">
+                                    <input type="radio" name="icon-1" value="bag">
+                                    <img src="icons/icon-bag.svg">
+                                    Bag
+                                </label>
+                                <label class="icon">
+                                    <input type="radio" name="icon-1" value="belt">
+                                    <img src="icons/icon-belt.svg">
+                                    Belt
+                                </label>
+                                <label class="icon">
+                                    <input type="radio" name="icon-1" value="boots">
+                                    <img src="icons/icon-boots.svg">
+                                    Boots
+                                </label>
+                                <label class="icon">
+                                    <input type="radio" name="icon-1" value="cap">
+                                    <img src="icons/icon-cap.svg">
+                                    Cap
+                                </label>
+                                <label class="icon">
+                                    <input type="radio" name="icon-1" value="crop">
+                                    <img src="icons/icon-crop.svg">
+                                    Crop
+                                </label>
+                                <label class="icon">
+                                    <input type="radio" name="icon-1" value="dress-shirt">
+                                    <img src="icons/icon-dress-shirt.svg">
+                                    Dress Shirt
+                                </label>
+                                <label class="icon">
+                                    <input type="radio" name="icon-1" value="hoodie">
+                                    <img src="icons/icon-hoodie.svg">
+                                    Hoodie
+                                </label>
+                                <label class="icon">
+                                    <input type="radio" name="icon-1" value="jeans">
+                                    <img src="icons/icon-jeans.svg">
+                                    Jeans
+                                </label>
+                                <label class="icon">
+                                    <input type="radio" name="icon-1" value="polo">
+                                    <img src="icons/icon-polo.svg">
+                                    Polo
+                                </label>
+                                <label class="icon">
+                                    <input type="radio" name="icon-1" value="shirt">
+                                    <img src="icons/icon-shirt.svg">
+                                    Shirt
+                                </label>
+                                <label class="icon">
+                                    <input type="radio" name="icon-1" value="shorts">
+                                    <img src="icons/icon-shorts.svg">
+                                    Shorts
+                                </label>
+                                <label class="icon">
+                                    <input type="radio" name="icon-1" value="tank">
+                                    <img src="icons/icon-tank.svg">
+                                    Tank
+                                </label>
+                                <label class="icon">
+                                    <input type="radio" name="icon-1" value="tee">
+                                    <img src="icons/icon-tee.svg">
+                                    T-Shirt
+                                </label>
+                                <label class="icon">
+                                    <input type="radio" name="icon-1" value="tights">
+                                    <img src="icons/icon-tights.svg">
+                                    Tights
+                                </label>
+                                <label class="icon">
+                                    <input type="radio" name="icon-1" value="track-pants">
+                                    <img src="icons/icon-track-pants.svg">
+                                    Pants
+                                </label>
+                                <label class="icon">
+                                    <input type="radio" name="icon-1" value="work-shirt">
+                                    <img src="icons/icon-work-shirt.svg">
+                                    Work Shirt
+                                </label>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <hr>
@@ -110,6 +303,91 @@
                                 <option value="4">4</option>
                             </select> 
                             <span id="limitHelpBlock" class="form-text text-muted">Number of slots for this one category</span>
+                            </div>
+                            <div class="form-group row">
+                                <label for="limit" class="col-4 col-form-label">Icon</label> 
+                                <div class="col-8">
+                                    <label class="icon">
+                                        <input type="radio" name="icon-2" value="bag">
+                                        <img src="icons/icon-bag.svg">
+                                        Bag
+                                    </label>
+                                    <label class="icon">
+                                        <input type="radio" name="icon-2" value="belt">
+                                        <img src="icons/icon-belt.svg">
+                                        Belt
+                                    </label>
+                                    <label class="icon">
+                                        <input type="radio" name="icon-2" value="boots">
+                                        <img src="icons/icon-boots.svg">
+                                        Boots
+                                    </label>
+                                    <label class="icon">
+                                        <input type="radio" name="icon-2" value="cap">
+                                        <img src="icons/icon-cap.svg">
+                                        Cap
+                                    </label>
+                                    <label class="icon">
+                                        <input type="radio" name="icon-2" value="crop">
+                                        <img src="icons/icon-crop.svg">
+                                        Crop
+                                    </label>
+                                    <label class="icon">
+                                        <input type="radio" name="icon-2" value="dress-shirt">
+                                        <img src="icons/icon-dress-shirt.svg">
+                                        Dress Shirt
+                                    </label>
+                                    <label class="icon">
+                                        <input type="radio" name="icon-2" value="hoodie">
+                                        <img src="icons/icon-hoodie.svg">
+                                        Hoodie
+                                    </label>
+                                    <label class="icon">
+                                        <input type="radio" name="icon-2" value="jeans">
+                                        <img src="icons/icon-jeans.svg">
+                                        Jeans
+                                    </label>
+                                    <label class="icon">
+                                        <input type="radio" name="icon-2" value="polo">
+                                        <img src="icons/icon-polo.svg">
+                                        Polo
+                                    </label>
+                                    <label class="icon">
+                                        <input type="radio" name="icon-2" value="shirt">
+                                        <img src="icons/icon-shirt.svg">
+                                        Shirt
+                                    </label>
+                                    <label class="icon">
+                                        <input type="radio" name="icon-2" value="shorts">
+                                        <img src="icons/icon-shorts.svg">
+                                        Shorts
+                                    </label>
+                                    <label class="icon">
+                                        <input type="radio" name="icon-2" value="tank">
+                                        <img src="icons/icon-tank.svg">
+                                        Tank
+                                    </label>
+                                    <label class="icon">
+                                        <input type="radio" name="icon-2" value="tee">
+                                        <img src="icons/icon-tee.svg">
+                                        T-Shirt
+                                    </label>
+                                    <label class="icon">
+                                        <input type="radio" name="icon-2" value="tights">
+                                        <img src="icons/icon-tights.svg">
+                                        Tights
+                                    </label>
+                                    <label class="icon">
+                                        <input type="radio" name="icon-2" value="track-pants">
+                                        <img src="icons/icon-track-pants.svg">
+                                        Pants
+                                    </label>
+                                    <label class="icon">
+                                        <input type="radio" name="icon-2" value="work-shirt">
+                                        <img src="icons/icon-work-shirt.svg">
+                                        Work Shirt
+                                    </label>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -146,6 +424,91 @@
                             </select> 
                             <span id="limitHelpBlock" class="form-text text-muted">Number of slots for this one category</span>
                             </div>
+                            <div class="form-group row">
+                                <label for="limit" class="col-4 col-form-label">Icon</label> 
+                                <div class="col-8">
+                                    <label class="icon">
+                                        <input type="radio" name="icon-3" value="bag">
+                                        <img src="icons/icon-bag.svg">
+                                        Bag
+                                    </label>
+                                    <label class="icon">
+                                        <input type="radio" name="icon-3" value="belt">
+                                        <img src="icons/icon-belt.svg">
+                                        Belt
+                                    </label>
+                                    <label class="icon">
+                                        <input type="radio" name="icon-3" value="boots">
+                                        <img src="icons/icon-boots.svg">
+                                        Boots
+                                    </label>
+                                    <label class="icon">
+                                        <input type="radio" name="icon-3" value="cap">
+                                        <img src="icons/icon-cap.svg">
+                                        Cap
+                                    </label>
+                                    <label class="icon">
+                                        <input type="radio" name="icon-3" value="crop">
+                                        <img src="icons/icon-crop.svg">
+                                        Crop
+                                    </label>
+                                    <label class="icon">
+                                        <input type="radio" name="icon-3" value="dress-shirt">
+                                        <img src="icons/icon-dress-shirt.svg">
+                                        Dress Shirt
+                                    </label>
+                                    <label class="icon">
+                                        <input type="radio" name="icon-3" value="hoodie">
+                                        <img src="icons/icon-hoodie.svg">
+                                        Hoodie
+                                    </label>
+                                    <label class="icon">
+                                        <input type="radio" name="icon-3" value="jeans">
+                                        <img src="icons/icon-jeans.svg">
+                                        Jeans
+                                    </label>
+                                    <label class="icon">
+                                        <input type="radio" name="icon-3" value="polo">
+                                        <img src="icons/icon-polo.svg">
+                                        Polo
+                                    </label>
+                                    <label class="icon">
+                                        <input type="radio" name="icon-3" value="shirt">
+                                        <img src="icons/icon-shirt.svg">
+                                        Shirt
+                                    </label>
+                                    <label class="icon">
+                                        <input type="radio" name="icon-3" value="shorts">
+                                        <img src="icons/icon-shorts.svg">
+                                        Shorts
+                                    </label>
+                                    <label class="icon">
+                                        <input type="radio" name="icon-3" value="tank">
+                                        <img src="icons/icon-tank.svg">
+                                        Tank
+                                    </label>
+                                    <label class="icon">
+                                        <input type="radio" name="icon-3" value="tee">
+                                        <img src="icons/icon-tee.svg">
+                                        T-Shirt
+                                    </label>
+                                    <label class="icon">
+                                        <input type="radio" name="icon-3" value="tights">
+                                        <img src="icons/icon-tights.svg">
+                                        Tights
+                                    </label>
+                                    <label class="icon">
+                                        <input type="radio" name="icon-3" value="track-pants">
+                                        <img src="icons/icon-track-pants.svg">
+                                        Pants
+                                    </label>
+                                    <label class="icon">
+                                        <input type="radio" name="icon-3" value="work-shirt">
+                                        <img src="icons/icon-work-shirt.svg">
+                                        Work Shirt
+                                    </label>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -179,11 +542,13 @@
                 const title = dataSets[i].querySelector('.title_input').value;
                 const tag = dataSets[i].querySelector('.tag_input').value;
                 const limit = dataSets[i].querySelector('.limit_input').value;
-                if(title != '' && tag != '' && limit != '') {
+                const icon = dataSets[i].querySelector('input[name="icon-'+i+'"]:checked') && dataSets[i].querySelector('input[name="icon-'+i+'"]:checked').value;
+                if(title != '' && tag != '' && limit != '' && icon != '') {
                     jsArray.push({
                         title,
                         tag,
-                        limit
+                        icon,
+                        limit,
                     })
                 }
             }
