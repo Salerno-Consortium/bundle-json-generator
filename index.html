@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Bundle JSON Generator</title>
+        <title>Bundle JSON & Ruby Object Generator</title>
         <!-- CSS only -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <style>
@@ -34,18 +34,21 @@
     <body>
         <div style="max-width: 1000px;margin: auto;padding-top:100px;">
             <form id="form" method="post">
+                <div style="display: grid;grid-template-columns: 1fr 4fr;grid-gap: 20px;">
+                    <div>
+                        Discount message for the bundle
+                    </div>
+                    <div class="form-group row">
+                        <input id="discount-message" name="first[title]" placeholder="eg. Activewear Bundle Discount" type="text" class="form-control title_input"> 
+                        <span class="form-text text-muted">This message will appear next to the discounted line item in the cart/checkout</span>
+                    </div>
+                </div>
+                <hr>
                 <div style="display: grid;grid-template-columns: 1fr 4fr;">
                     <div>
                         Category 1
                     </div>
                     <div class="category-data-set">
-                        <div class="form-group row">
-                            <label class="col-4 col-form-label" for="title">Category Title</label> 
-                            <div class="col-8">
-                            <input id="title" name="first[title]" placeholder="eg. Work Shirt" type="text" aria-describedby="titleHelpBlock" class="form-control title_input"> 
-                            <span id="titleHelpBlock" class="form-text text-muted">Category title shown on user interface</span>
-                            </div>
-                        </div>
                         <div class="form-group row">
                             <label for="text" class="col-4 col-form-label">Category Tag</label> 
                             <div class="col-8">
@@ -65,6 +68,15 @@
                             <span id="limitHelpBlock" class="form-text text-muted">Number of slots for this one category</span>
                             </div>
                         </div>
+                        <hr>
+                        <div class="form-group row">
+                            <label class="col-4 col-form-label" for="title">Category Title</label> 
+                            <div class="col-8">
+                            <input id="title" name="first[title]" placeholder="eg. Work Shirt" type="text" aria-describedby="titleHelpBlock" class="form-control title_input"> 
+                            <span id="titleHelpBlock" class="form-text text-muted">Category title shown on user interface</span>
+                            </div>
+                        </div>
+                        
                         <div class="form-group row">
                             <label for="limit" class="col-4 col-form-label">Icon</label> 
                             <div class="col-8">
@@ -84,7 +96,7 @@
                                     Boots
                                 </label>
                                 <label class="icon">
-                                    <input type="radio" name="icon" value="cap">
+                                    <input type="radio" name="icon-0" value="cap">
                                     <img src="icons/icon-cap.svg">
                                     Cap
                                 </label>
@@ -104,7 +116,7 @@
                                     Hoodie
                                 </label>
                                 <label class="icon">
-                                    <input type="radio" name="icon" value="jeans">
+                                    <input type="radio" name="icon-0" value="jeans">
                                     <img src="icons/icon-jeans.svg">
                                     Jeans
                                 </label>
@@ -150,6 +162,14 @@
                                 </label>
                             </div>
                         </div>
+                        <hr>
+                        <div class="form-group row">
+                            <label for="text" class="col-4 col-form-label">New Price</label> 
+                            <div class="col-8">
+                            <input id="text" name="new_price" placeholder="eg 35" type="number" class="form-control new_price_input"> 
+                            <span id="textHelpBlock" class="form-text text-muted">The 'new price' of all items in the bundle should equal the end bundle price</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <hr>
@@ -160,23 +180,16 @@
                     </div>
                     <div class="category-data-set">
                         <div class="form-group row">
-                            <label class="col-4 col-form-label" for="title">Category Title</label> 
-                            <div class="col-8">
-                            <input id="title" name="title" placeholder="eg. Work Shirt" type="text" aria-describedby="titleHelpBlock" class="form-control title_input"> 
-                            <span id="titleHelpBlock" class="form-text text-muted">Category title shown on user interface</span>
-                            </div>
-                        </div>
-                        <div class="form-group row">
                             <label for="text" class="col-4 col-form-label">Category Tag</label> 
                             <div class="col-8">
-                            <input id="text" name="text" placeholder="eg. example-bundle-workshirts" type="text" class="form-control tag_input" aria-describedby="textHelpBlock"> 
+                            <input id="text" name="first[category]" placeholder="eg. example-bundle-workshirts" type="text" class="form-control tag_input" aria-describedby="textHelpBlock"> 
                             <span id="textHelpBlock" class="form-text text-muted">To match the tag set in the admin</span>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="limit" class="col-4 col-form-label">Number of Slots</label> 
                             <div class="col-8">
-                            <select id="limit" name="limit" class="custom-select limit_input" aria-describedby="limitHelpBlock" required="required">
+                            <select id="limit" name="first[limit]" class="custom-select limit_input" aria-describedby="limitHelpBlock" required="required">
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
@@ -185,6 +198,15 @@
                             <span id="limitHelpBlock" class="form-text text-muted">Number of slots for this one category</span>
                             </div>
                         </div>
+                        <hr>
+                        <div class="form-group row">
+                            <label class="col-4 col-form-label" for="title">Category Title</label> 
+                            <div class="col-8">
+                            <input id="title" name="first[title]" placeholder="eg. Work Shirt" type="text" aria-describedby="titleHelpBlock" class="form-control title_input"> 
+                            <span id="titleHelpBlock" class="form-text text-muted">Category title shown on user interface</span>
+                            </div>
+                        </div>
+                        
                         <div class="form-group row">
                             <label for="limit" class="col-4 col-form-label">Icon</label> 
                             <div class="col-8">
@@ -209,7 +231,7 @@
                                     Cap
                                 </label>
                                 <label class="icon">
-                                    <input type="radio" name="icon-1" value="crop">
+                                    <input type="radio" name="icon-1 value="crop">
                                     <img src="icons/icon-crop.svg">
                                     Crop
                                 </label>
@@ -270,124 +292,12 @@
                                 </label>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <hr>
-
-                <div style="display: grid;grid-template-columns: 1fr 4fr;">
-                    <div>
-                        Category 3 <br>(Optional)
-                    </div>
-                    <div class="category-data-set">
+                        <hr>
                         <div class="form-group row">
-                            <label class="col-4 col-form-label" for="title">Category Title</label> 
+                            <label for="text" class="col-4 col-form-label">New Price</label> 
                             <div class="col-8">
-                            <input id="title" name="title" placeholder="eg. Work Shirt" type="text" aria-describedby="titleHelpBlock" class="form-control title_input"> 
-                            <span id="titleHelpBlock" class="form-text text-muted">Category title shown on user interface</span>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="text" class="col-4 col-form-label">Category Tag</label> 
-                            <div class="col-8">
-                            <input id="text" name="text" placeholder="eg. example-bundle-workshirts" type="text" class="form-control tag_input" aria-describedby="textHelpBlock"> 
-                            <span id="textHelpBlock" class="form-text text-muted">To match the tag set in the admin</span>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="limit" class="col-4 col-form-label">Number of Slots</label> 
-                            <div class="col-8">
-                            <select id="limit" name="limit" class="custom-select limit_input" aria-describedby="limitHelpBlock" required="required">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                            </select> 
-                            <span id="limitHelpBlock" class="form-text text-muted">Number of slots for this one category</span>
-                            </div>
-                            <div class="form-group row">
-                                <label for="limit" class="col-4 col-form-label">Icon</label> 
-                                <div class="col-8">
-                                    <label class="icon">
-                                        <input type="radio" name="icon-2" value="bag">
-                                        <img src="icons/icon-bag.svg">
-                                        Bag
-                                    </label>
-                                    <label class="icon">
-                                        <input type="radio" name="icon-2" value="belt">
-                                        <img src="icons/icon-belt.svg">
-                                        Belt
-                                    </label>
-                                    <label class="icon">
-                                        <input type="radio" name="icon-2" value="boots">
-                                        <img src="icons/icon-boots.svg">
-                                        Boots
-                                    </label>
-                                    <label class="icon">
-                                        <input type="radio" name="icon-2" value="cap">
-                                        <img src="icons/icon-cap.svg">
-                                        Cap
-                                    </label>
-                                    <label class="icon">
-                                        <input type="radio" name="icon-2" value="crop">
-                                        <img src="icons/icon-crop.svg">
-                                        Crop
-                                    </label>
-                                    <label class="icon">
-                                        <input type="radio" name="icon-2" value="dress-shirt">
-                                        <img src="icons/icon-dress-shirt.svg">
-                                        Dress Shirt
-                                    </label>
-                                    <label class="icon">
-                                        <input type="radio" name="icon-2" value="hoodie">
-                                        <img src="icons/icon-hoodie.svg">
-                                        Hoodie
-                                    </label>
-                                    <label class="icon">
-                                        <input type="radio" name="icon-2" value="jeans">
-                                        <img src="icons/icon-jeans.svg">
-                                        Jeans
-                                    </label>
-                                    <label class="icon">
-                                        <input type="radio" name="icon-2" value="polo">
-                                        <img src="icons/icon-polo.svg">
-                                        Polo
-                                    </label>
-                                    <label class="icon">
-                                        <input type="radio" name="icon-2" value="shirt">
-                                        <img src="icons/icon-shirt.svg">
-                                        Shirt
-                                    </label>
-                                    <label class="icon">
-                                        <input type="radio" name="icon-2" value="shorts">
-                                        <img src="icons/icon-shorts.svg">
-                                        Shorts
-                                    </label>
-                                    <label class="icon">
-                                        <input type="radio" name="icon-2" value="tank">
-                                        <img src="icons/icon-tank.svg">
-                                        Tank
-                                    </label>
-                                    <label class="icon">
-                                        <input type="radio" name="icon-2" value="tee">
-                                        <img src="icons/icon-tee.svg">
-                                        T-Shirt
-                                    </label>
-                                    <label class="icon">
-                                        <input type="radio" name="icon-2" value="tights">
-                                        <img src="icons/icon-tights.svg">
-                                        Tights
-                                    </label>
-                                    <label class="icon">
-                                        <input type="radio" name="icon-2" value="track-pants">
-                                        <img src="icons/icon-track-pants.svg">
-                                        Pants
-                                    </label>
-                                    <label class="icon">
-                                        <input type="radio" name="icon-2" value="work-shirt">
-                                        <img src="icons/icon-work-shirt.svg">
-                                        Work Shirt
-                                    </label>
-                                </div>
+                            <input id="text" name="new_price" placeholder="eg 35" type="number" class="form-control new_price_input"> 
+                            <span id="textHelpBlock" class="form-text text-muted">The 'new price' of all items in the bundle should equal the end bundle price</span>
                             </div>
                         </div>
                     </div>
@@ -396,27 +306,20 @@
 
                 <div style="display: grid;grid-template-columns: 1fr 4fr;">
                     <div>
-                        Category 4 <br>(Optional)
+                        Category 3 (Optional)
                     </div>
                     <div class="category-data-set">
                         <div class="form-group row">
-                            <label class="col-4 col-form-label" for="title">Category Title</label> 
-                            <div class="col-8">
-                            <input id="title" name="title" placeholder="eg. Work Shirt" type="text" aria-describedby="titleHelpBlock" class="form-control title_input"> 
-                            <span id="titleHelpBlock" class="form-text text-muted">Category title shown on user interface</span>
-                            </div>
-                        </div>
-                        <div class="form-group row">
                             <label for="text" class="col-4 col-form-label">Category Tag</label> 
                             <div class="col-8">
-                            <input id="text" name="text" placeholder="eg. example-bundle-workshirts" type="text" class="form-control tag_input" aria-describedby="textHelpBlock"> 
+                            <input id="text" name="first[category]" placeholder="eg. example-bundle-workshirts" type="text" class="form-control tag_input" aria-describedby="textHelpBlock"> 
                             <span id="textHelpBlock" class="form-text text-muted">To match the tag set in the admin</span>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="limit" class="col-4 col-form-label">Number of Slots</label> 
                             <div class="col-8">
-                            <select id="limit" name="limit" class="custom-select limit_input" aria-describedby="limitHelpBlock" required="required">
+                            <select id="limit" name="first[limit]" class="custom-select limit_input" aria-describedby="limitHelpBlock" required="required">
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
@@ -424,90 +327,237 @@
                             </select> 
                             <span id="limitHelpBlock" class="form-text text-muted">Number of slots for this one category</span>
                             </div>
-                            <div class="form-group row">
-                                <label for="limit" class="col-4 col-form-label">Icon</label> 
-                                <div class="col-8">
-                                    <label class="icon">
-                                        <input type="radio" name="icon-3" value="bag">
-                                        <img src="icons/icon-bag.svg">
-                                        Bag
-                                    </label>
-                                    <label class="icon">
-                                        <input type="radio" name="icon-3" value="belt">
-                                        <img src="icons/icon-belt.svg">
-                                        Belt
-                                    </label>
-                                    <label class="icon">
-                                        <input type="radio" name="icon-3" value="boots">
-                                        <img src="icons/icon-boots.svg">
-                                        Boots
-                                    </label>
-                                    <label class="icon">
-                                        <input type="radio" name="icon-3" value="cap">
-                                        <img src="icons/icon-cap.svg">
-                                        Cap
-                                    </label>
-                                    <label class="icon">
-                                        <input type="radio" name="icon-3" value="crop">
-                                        <img src="icons/icon-crop.svg">
-                                        Crop
-                                    </label>
-                                    <label class="icon">
-                                        <input type="radio" name="icon-3" value="dress-shirt">
-                                        <img src="icons/icon-dress-shirt.svg">
-                                        Dress Shirt
-                                    </label>
-                                    <label class="icon">
-                                        <input type="radio" name="icon-3" value="hoodie">
-                                        <img src="icons/icon-hoodie.svg">
-                                        Hoodie
-                                    </label>
-                                    <label class="icon">
-                                        <input type="radio" name="icon-3" value="jeans">
-                                        <img src="icons/icon-jeans.svg">
-                                        Jeans
-                                    </label>
-                                    <label class="icon">
-                                        <input type="radio" name="icon-3" value="polo">
-                                        <img src="icons/icon-polo.svg">
-                                        Polo
-                                    </label>
-                                    <label class="icon">
-                                        <input type="radio" name="icon-3" value="shirt">
-                                        <img src="icons/icon-shirt.svg">
-                                        Shirt
-                                    </label>
-                                    <label class="icon">
-                                        <input type="radio" name="icon-3" value="shorts">
-                                        <img src="icons/icon-shorts.svg">
-                                        Shorts
-                                    </label>
-                                    <label class="icon">
-                                        <input type="radio" name="icon-3" value="tank">
-                                        <img src="icons/icon-tank.svg">
-                                        Tank
-                                    </label>
-                                    <label class="icon">
-                                        <input type="radio" name="icon-3" value="tee">
-                                        <img src="icons/icon-tee.svg">
-                                        T-Shirt
-                                    </label>
-                                    <label class="icon">
-                                        <input type="radio" name="icon-3" value="tights">
-                                        <img src="icons/icon-tights.svg">
-                                        Tights
-                                    </label>
-                                    <label class="icon">
-                                        <input type="radio" name="icon-3" value="track-pants">
-                                        <img src="icons/icon-track-pants.svg">
-                                        Pants
-                                    </label>
-                                    <label class="icon">
-                                        <input type="radio" name="icon-3" value="work-shirt">
-                                        <img src="icons/icon-work-shirt.svg">
-                                        Work Shirt
-                                    </label>
-                                </div>
+                        </div>
+                        <hr>
+                        <div class="form-group row">
+                            <label class="col-4 col-form-label" for="title">Category Title</label> 
+                            <div class="col-8">
+                            <input id="title" name="first[title]" placeholder="eg. Work Shirt" type="text" aria-describedby="titleHelpBlock" class="form-control title_input"> 
+                            <span id="titleHelpBlock" class="form-text text-muted">Category title shown on user interface</span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group row">
+                            <label for="limit" class="col-4 col-form-label">Icon</label> 
+                            <div class="col-8">
+                                <label class="icon">
+                                    <input type="radio" name="icon-2" value="bag">
+                                    <img src="icons/icon-bag.svg">
+                                    Bag
+                                </label>
+                                <label class="icon">
+                                    <input type="radio" name="icon-2" value="belt">
+                                    <img src="icons/icon-belt.svg">
+                                    Belt
+                                </label>
+                                <label class="icon">
+                                    <input type="radio" name="icon-2" value="boots">
+                                    <img src="icons/icon-boots.svg">
+                                    Boots
+                                </label>
+                                <label class="icon">
+                                    <input type="radio" name="icon-2" value="cap">
+                                    <img src="icons/icon-cap.svg">
+                                    Cap
+                                </label>
+                                <label class="icon">
+                                    <input type="radio" name="icon-2" value="crop">
+                                    <img src="icons/icon-crop.svg">
+                                    Crop
+                                </label>
+                                <label class="icon">
+                                    <input type="radio" name="icon-2" value="dress-shirt">
+                                    <img src="icons/icon-dress-shirt.svg">
+                                    Dress Shirt
+                                </label>
+                                <label class="icon">
+                                    <input type="radio" name="icon-2" value="hoodie">
+                                    <img src="icons/icon-hoodie.svg">
+                                    Hoodie
+                                </label>
+                                <label class="icon">
+                                    <input type="radio" name="icon-2" value="jeans">
+                                    <img src="icons/icon-jeans.svg">
+                                    Jeans
+                                </label>
+                                <label class="icon">
+                                    <input type="radio" name="icon-2" value="polo">
+                                    <img src="icons/icon-polo.svg">
+                                    Polo
+                                </label>
+                                <label class="icon">
+                                    <input type="radio" name="icon-2" value="shirt">
+                                    <img src="icons/icon-shirt.svg">
+                                    Shirt
+                                </label>
+                                <label class="icon">
+                                    <input type="radio" name="icon-2" value="shorts">
+                                    <img src="icons/icon-shorts.svg">
+                                    Shorts
+                                </label>
+                                <label class="icon">
+                                    <input type="radio" name="icon-2" value="tank">
+                                    <img src="icons/icon-tank.svg">
+                                    Tank
+                                </label>
+                                <label class="icon">
+                                    <input type="radio" name="icon-2" value="tee">
+                                    <img src="icons/icon-tee.svg">
+                                    T-Shirt
+                                </label>
+                                <label class="icon">
+                                    <input type="radio" name="icon-2" value="tights">
+                                    <img src="icons/icon-tights.svg">
+                                    Tights
+                                </label>
+                                <label class="icon">
+                                    <input type="radio" name="icon-2" value="track-pants">
+                                    <img src="icons/icon-track-pants.svg">
+                                    Pants
+                                </label>
+                                <label class="icon">
+                                    <input type="radio" name="icon-2" value="work-shirt">
+                                    <img src="icons/icon-work-shirt.svg">
+                                    Work Shirt
+                                </label>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="form-group row">
+                            <label for="text" class="col-4 col-form-label">New Price</label> 
+                            <div class="col-8">
+                            <input id="text" name="new_price" placeholder="eg 35" type="number" class="form-control new_price_input"> 
+                            <span id="textHelpBlock" class="form-text text-muted">The 'new price' of all items in the bundle should equal the end bundle price</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+
+                <div style="display: grid;grid-template-columns: 1fr 4fr;">
+                    <div>
+                        Category 4 (Optional)
+                    </div>
+                    <div class="category-data-set">
+                        <div class="form-group row">
+                            <label for="text" class="col-4 col-form-label">Category Tag</label> 
+                            <div class="col-8">
+                            <input id="text" name="first[category]" placeholder="eg. example-bundle-workshirts" type="text" class="form-control tag_input" aria-describedby="textHelpBlock"> 
+                            <span id="textHelpBlock" class="form-text text-muted">To match the tag set in the admin</span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="limit" class="col-4 col-form-label">Number of Slots</label> 
+                            <div class="col-8">
+                            <select id="limit" name="first[limit]" class="custom-select limit_input" aria-describedby="limitHelpBlock" required="required">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                            </select> 
+                            <span id="limitHelpBlock" class="form-text text-muted">Number of slots for this one category</span>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="form-group row">
+                            <label class="col-4 col-form-label" for="title">Category Title</label> 
+                            <div class="col-8">
+                            <input id="title" name="first[title]" placeholder="eg. Work Shirt" type="text" aria-describedby="titleHelpBlock" class="form-control title_input"> 
+                            <span id="titleHelpBlock" class="form-text text-muted">Category title shown on user interface</span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group row">
+                            <label for="limit" class="col-4 col-form-label">Icon</label> 
+                            <div class="col-8">
+                                <label class="icon">
+                                    <input type="radio" name="icon-3" value="bag">
+                                    <img src="icons/icon-bag.svg">
+                                    Bag
+                                </label>
+                                <label class="icon">
+                                    <input type="radio" name="icon-3" value="belt">
+                                    <img src="icons/icon-belt.svg">
+                                    Belt
+                                </label>
+                                <label class="icon">
+                                    <input type="radio" name="icon-3" value="boots">
+                                    <img src="icons/icon-boots.svg">
+                                    Boots
+                                </label>
+                                <label class="icon">
+                                    <input type="radio" name="icon-3" value="cap">
+                                    <img src="icons/icon-cap.svg">
+                                    Cap
+                                </label>
+                                <label class="icon">
+                                    <input type="radio" name="icon-3" value="crop">
+                                    <img src="icons/icon-crop.svg">
+                                    Crop
+                                </label>
+                                <label class="icon">
+                                    <input type="radio" name="icon-3" value="dress-shirt">
+                                    <img src="icons/icon-dress-shirt.svg">
+                                    Dress Shirt
+                                </label>
+                                <label class="icon">
+                                    <input type="radio" name="icon-3" value="hoodie">
+                                    <img src="icons/icon-hoodie.svg">
+                                    Hoodie
+                                </label>
+                                <label class="icon">
+                                    <input type="radio" name="icon-3" value="jeans">
+                                    <img src="icons/icon-jeans.svg">
+                                    Jeans
+                                </label>
+                                <label class="icon">
+                                    <input type="radio" name="icon-3" value="polo">
+                                    <img src="icons/icon-polo.svg">
+                                    Polo
+                                </label>
+                                <label class="icon">
+                                    <input type="radio" name="icon-3" value="shirt">
+                                    <img src="icons/icon-shirt.svg">
+                                    Shirt
+                                </label>
+                                <label class="icon">
+                                    <input type="radio" name="icon-3" value="shorts">
+                                    <img src="icons/icon-shorts.svg">
+                                    Shorts
+                                </label>
+                                <label class="icon">
+                                    <input type="radio" name="icon-3" value="tank">
+                                    <img src="icons/icon-tank.svg">
+                                    Tank
+                                </label>
+                                <label class="icon">
+                                    <input type="radio" name="icon-3" value="tee">
+                                    <img src="icons/icon-tee.svg">
+                                    T-Shirt
+                                </label>
+                                <label class="icon">
+                                    <input type="radio" name="icon-3" value="tights">
+                                    <img src="icons/icon-tights.svg">
+                                    Tights
+                                </label>
+                                <label class="icon">
+                                    <input type="radio" name="icon-3" value="track-pants">
+                                    <img src="icons/icon-track-pants.svg">
+                                    Pants
+                                </label>
+                                <label class="icon">
+                                    <input type="radio" name="icon-3" value="work-shirt">
+                                    <img src="icons/icon-work-shirt.svg">
+                                    Work Shirt
+                                </label>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="form-group row">
+                            <label for="text" class="col-4 col-form-label">New Price</label> 
+                            <div class="col-8">
+                            <input id="text" name="new_price" placeholder="eg 35" type="number" class="form-control new_price_input"> 
+                            <span id="textHelpBlock" class="form-text text-muted">The 'new price' of all items in the bundle should equal the end bundle price</span>
                             </div>
                         </div>
                     </div>
@@ -515,47 +565,86 @@
                 <hr>
                 <div class="form-group row">
                     <div class="offset-4 col-8">
-                    <button name="submit" type="submit" class="btn btn-primary">Generate JSON</button>
+                    <button name="submit" type="submit" class="btn btn-primary">Generate Data</button>
                     </div>
                 </div>
             </form>
-
-            <div class="result-json-area" style="display: none;">
-                <div class="form-group">
-                    <label for="json-code" style="text-align:center">👇 Copy this code 👇</label>
-                    <input class="form-control" id="json-code">
-                  </div>
+            <div style="background: #ffff91;padding: 10px;margin-top: 10px;">
+                <div class="result-json-area" style="display: none;text-align: center;margin-top: 25px;margin-bottom: 25px;">
+                    <div class="form-group">
+                        <label for="json-code" style="text-align:center">👇 Copy this JSON object and paste it in the metafield 👇</label>
+                        <input class="form-control" id="json-code">
+                      </div>
+                </div>
+                <div class="result-ruby-area" style="display: none;text-align: center;margin-top: 25px;margin-bottom: 25px;">
+                    <div class="form-group">
+                        <label for="ruby-code" style="text-align:center">👇 Copy this Ruby object and paste in the bundle checkout script 👇</label>
+                        <input class="form-control" id="ruby-code">
+                      </div>
+                </div>
             </div>
         </div>
     </body>
 </html>
 
 <script>
+    const stringifyObject = (obj) => {
+        let str = `{ discount_message: '${obj.discount_message}',
+                  bundle_items: [`;
+        obj.bundle_items.forEach(item => {
+            str += `{
+                product_tag: '${item.tag}',
+                new_price: ${item.new_price*100},
+                quantity: ${item.limit},
+                in_cart: false
+            },`;
+        });
+        str += `]
+        },`;
+        return str;
+    }
     document.addEventListener("DOMContentLoaded", () => {
         const form = document.getElementById('form');
         form.addEventListener("submit", (e) => {
             e.preventDefault();
-            let jsArray = [];
+            let jsArrayForJSON = [];
+            let rubyObjectForScript = {
+                discount_message: '',
+                bundle_items: []
+            }
             const dataSets = document.getElementsByClassName('category-data-set');
             console.log(dataSets);
+            const discount_message = document.getElementById('discount-message').value;
             for (var i = 0; i < dataSets.length; i++){
                 const title = dataSets[i].querySelector('.title_input').value;
                 const tag = dataSets[i].querySelector('.tag_input').value;
-                const limit = dataSets[i].querySelector('.limit_input').value;
+                const limit = parseInt(dataSets[i].querySelector('.limit_input').value);
                 const icon = dataSets[i].querySelector('input[name="icon-'+i+'"]:checked') && dataSets[i].querySelector('input[name="icon-'+i+'"]:checked').value;
+                const new_price = dataSets[i].querySelector('.new_price_input').value;
                 if(title != '' && tag != '' && limit != '' && icon != '') {
-                    jsArray.push({
+                    jsArrayForJSON.push({
                         title,
                         tag,
                         icon,
                         limit,
                     })
                 }
+                if(discount_message != '' && tag != '' && limit != '' && new_price > 0) {
+                    rubyObjectForScript.discount_message = discount_message;
+                    rubyObjectForScript.bundle_items.push({
+                        tag,
+                        new_price,
+                        limit
+                    })
+                }
             }
-            const resultJSON = JSON.stringify(jsArray);
+            const resultJSON = JSON.stringify(jsArrayForJSON);
             document.querySelector('.result-json-area').style.display = "block";
             document.getElementById('json-code').value = resultJSON;
+            document.querySelector('.result-ruby-area').style.display = "block";
+            document.getElementById('ruby-code').value = stringifyObject(rubyObjectForScript);
             console.log(resultJSON);
+            console.log(stringifyObject(rubyObjectForScript));
         });
     })
 </script>
